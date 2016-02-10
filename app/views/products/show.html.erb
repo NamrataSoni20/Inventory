@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<p align="center"><strong  margin-left="200">Showing Product Details</strong></p>
+<table align="center"> 
+  <thead>
+
+    <tr>
+      <th width="100"> <strong>Name</strong></th> 
+       <th width="100"> <strong>Price</strong></th>
+       <th width="100"> <strong>Quantity</strong></th>
+       <th width="200"> <strong>Purchase Date</strong></th>
+        <th width="200"> <strong>Category Name</strong></th>
+    </tr>
+
+  </thead>
+  <tbody>
+
+    <tr>
+    <td><%= @product.name %></td>
+ 
+  <td><%= @product.price %></td>
+  
+  <td><%= @product.quantity %></td>
+ 
+  <td><%= @product.purchasedate %></td>
+  
+  <td><%= @product.category.name %></td>
+     
+    </tr>
+  </tbody>
+</table>
+ 
+  
+ 
+  
+</br></br>
+<p align="center">
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %></p>

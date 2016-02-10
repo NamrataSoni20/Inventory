@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "Inventory", root_path, id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+           
+            <li><%= link_to "Categories",categories_path %></li>
+            <li><%= link_to "Products", products_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+     <%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+ <table align="center">
+   <caption><h3>Add New Product</h3></caption><br><br>
+   
+   <tbody>
+
+     <tr>
+       <td><%= f.label :name %></td><td margin-top="50"><%= f.text_field :name %><br><br></td>
+     </tr>
+     <tr>
+       <td><%= f.label :price %></td><td margin-top="50"><%= f.text_field :price %><br><br></td>
+     </tr>
+     <tr>
+       <td><%= f.label :quantity %></td><td margin-top="50"><%= f.text_field :quantity %><br><br></td>
+     </tr>
+     <tr>
+       <td><%= f.label :purchasedate %></td><td margin-top="50"><%= f.date_select :purchasedate %><br><br></td>
+     </tr>
+     <tr>
+       <td><%= f.label :categories %></td><td margin-top="50"><%= f.select 'category_id', options_for_select(@categories.map{|category| ["#{category.name}", category.id] }) %><br><br></td>
+     </tr>
+   </tbody>
+ </table>
+  </div>
+  <div class="actions" style="margin-left:525px">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+    </div>
+
+<%= yield %>
+
+</body>
+
+
+</html>
